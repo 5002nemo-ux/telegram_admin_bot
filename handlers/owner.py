@@ -21,7 +21,7 @@ async def cmd_start(message: Message):
         "🤬 So'kinishlarni filtrlash\n"
         "🔇 Qoidabuzarlarni jazolash (Mute, Ban, Warn)\n"
         "🌐 Ko'p tilli qo'llab-quvvatlash (O'zbek, Rus, Ingliz)\n\n"
-        "📞 <b>Murojaat uchun:</b> @eldorbek_muhiddinovich\n\n"
+        "📞 <b>Murojaat uchun:</b> @eldorbek_muxiddinovich\n\n"
         "Meni guruhingizga qo'shing va to'liq <b>Admin huquqlarini</b> bering!"
     )
     keyboard = InlineKeyboardMarkup(inline_keyboard=[
