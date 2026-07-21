@@ -41,8 +41,8 @@ async def main():
     dp.include_router(admin.router)
     dp.include_router(filters.router)  # Filter eng oxirida turadi, xabarlarni tutib qolishi uchun
     
-    # Menyuga buyruqlarni qo'shish
     commands = [
+        BotCommand(command="start", description="Botni ishga tushirish (Shaxsiy chatda)"),
         BotCommand(command="settings", description="Guruh sozlamalari (Adminlar)"),
         BotCommand(command="info", description="Foydalanuvchi ma'lumotlari"),
         BotCommand(command="ban", description="Foydalanuvchini guruhdan haydash"),
@@ -53,6 +53,10 @@ async def main():
         BotCommand(command="id", description="O'z ID raqamingizni ko'rish")
     ]
     await bot.set_my_commands(commands)
+    
+    # Botning bio va haqida qismini sozlash
+    await bot.set_my_short_description("🤖 Guruhlar uchun aqlli anti-spam yordamchi bot.\n\n📞 Murojaat: @eldorbek_muhiddinovich")
+    await bot.set_my_description("🤖 Guruh Yordamchisi - guruhingizni spam, linklar va so'kinishlardan tozalab beruvchi hamda qoidabuzarlarni jazolovchi mukammal bot!\n\nMeni guruhga qo'shing va to'liq admin huquqlarini bering.\n\n📞 Murojaat uchun: @eldorbek_muhiddinovich")
     
     # Botni ishga tushirish
     print("Bot muvaffaqiyatli ishga tushdi!")
