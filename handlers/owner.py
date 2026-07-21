@@ -1,11 +1,33 @@
 from aiogram import Router, F
-from aiogram.types import Message
+from aiogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 from aiogram.filters import Command
 import config
 from database import get_all_groups
 import asyncio
 
 router = Router()
+
+@router.message(Command("start"))
+async def cmd_start(message: Message):
+    if message.chat.type != "private":
+        return
+        
+    bot_info = await message.bot.me()
+    text = (
+        f"🤖 <b>Assalomu alaykum, {message.from_user.full_name}!</b>\n\n"
+        "Men guruhlarni ortiqcha asabbuzarliklarsiz boshqarishga yordam beruvchi aqlli botman.\n\n"
+        "<b>Mening vazifalarim:</b>\n"
+        "🔗 Linklar va reklamalarni avtomatik o'chirish\n"
+        "🤬 So'kinishlarni filtrlash\n"
+        "🔇 Qoidabuzarlarni jazolash (Mute, Ban, Warn)\n"
+        "🌐 Ko'p tilli qo'llab-quvvatlash (O'zbek, Rus, Ingliz)\n\n"
+        "📞 <b>Murojaat uchun:</b> @eldorbek_muhiddinovich\n\n"
+        "Meni guruhingizga qo'shing va to'liq <b>Admin huquqlarini</b> bering!"
+    )
+    keyboard = InlineKeyboardMarkup(inline_keyboard=[
+        [InlineKeyboardButton(text="➕ Guruhga qo'shish", url=f"https://t.me/{bot_info.username}?startgroup=true")]
+    ])
+    await message.answer(text, reply_markup=keyboard, parse_mode="HTML")
 
 @router.message(Command("id"))
 async def cmd_id(message: Message):
